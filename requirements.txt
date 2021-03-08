@@ -1,9 +1,12 @@
 hachoir
 numpy
-tgcrypto
 Pillow
 psycopg2-binary
 sqlalchemy
 https://github.com/Mahesh0253/pyrogram/archive/asyncio.zip
 git+https://github.com/kkroening/ffmpeg-python.git
 FFmpeg
+TgCrypto
+python-dotenv
+youtube_dl
+youtube_search_python
