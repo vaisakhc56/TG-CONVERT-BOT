@@ -5,5 +5,5 @@ Pillow
 psycopg2-binary
 sqlalchemy
 https://github.com/Mahesh0253/pyrogram/archive/asyncio.zip
-git+https://github/kkroening/ffmpeg-python.git
+git+https://github.com/kkroening/ffmpeg-python.git
 git+https://github.com/FFmpeg/FFmpeg.git
