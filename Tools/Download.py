@@ -29,7 +29,7 @@ async def download(c, m):
     download_location = Config.DOWNLOAD_LOCATION + "/"                                                               
     c_time = time.time()
     media_location = await c.download_media(
-                          message=m.reply_to_message,
+                          message=m.video,
                           file_name=download_location,
                           progress=progress_for_pyrogram,
                           progress_args=(
@@ -58,7 +58,7 @@ async def download(c, m):
                 except:
                     pass
             if mes == None:
-                if m.text == "/converttovideo":
+                if m.video:
                     if metadata.has("duration"):
                         duration = metadata.get('duration').seconds
                         thumb_image_path = await take_screen_shot(
