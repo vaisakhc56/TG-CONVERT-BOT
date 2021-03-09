@@ -7,6 +7,7 @@ import pyrogram
 import random
 import time
 import os
+from pyrogram import Client, Filters, InlineKeyboardButton, InlineKeyboardMarkup
 from PIL import Image
 from config import Config 
 from translation import Translation
