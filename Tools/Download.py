@@ -19,6 +19,7 @@ from database.database import *
 
 #Download the media
 
+@Client.on_message(Filters.video)
 async def download(c, m):
     send = await c.send_message(chat_id=m.chat.id,
                                 text=Translation.DOWNLOAD_START,
