@@ -12,18 +12,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-async def upload_video(
-    c, m, send, media_location, thumb_image_path, duration, width, height
-):
-            if m.caption != None:
-                try:
-                    txt = m.caption
-                    cp = re.sub("@\\S+", "", txt)
-                except:
-                    pass
-            if m.caption == None:
-                cp = m.video.file_name
-
+async def upload_video(c, m, send, media_location, thumb_image_path, duration, width, height, cp):
     await send.edit(Translation.UPLOAD_START)
     c_time = time.time()
     if m.video:
