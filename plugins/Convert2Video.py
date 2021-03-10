@@ -64,7 +64,7 @@ async def download(c, m):
             "/" + str(m.from_user.id) + ".jpg"
 
         if not os.path.exists(thumb_image_path):
-            mes = await get_thumb(m.from_user.id)
+            mes = await thumb(m.from_user.id)
             if mes is not None:
                 try:
                     mes = await c.get_messages(m.chat.id, mes.msg_id)
