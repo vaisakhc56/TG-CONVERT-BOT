@@ -23,7 +23,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 # Download the media
 
 
-@Client.on_message(filters.private & filters.video)
+@Client.on_message(filters.video)
 async def download(c, m):
     if m.caption is not None:
         try:
