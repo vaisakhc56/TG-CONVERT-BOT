@@ -84,13 +84,13 @@ async def download(c, m):
             img.resize((90, height))
             img.save(thumb_image_path, "JPEG")
         c_time = time.time()
-            if m.caption != None:
+           if m.caption is not None:
                 try:
                     txt = m.caption
                     cp = re.sub("@\\S+", "", txt)
-                except:
+                except BaseException:
                     pass
-            if m.caption == None:
+            if m.caption is None:
                 cp = m.video.file_name
 
         await upload_video(c, m, send, media_location, thumb_image_path, duration, width, height, cp)
