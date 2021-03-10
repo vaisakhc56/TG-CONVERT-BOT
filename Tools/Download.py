@@ -7,7 +7,7 @@ import re
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from PIL import Image
-from pyrogram import Client, Filters
+from pyrogram import Client
 
 from config import Config
 from database.database import *
