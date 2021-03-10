@@ -16,8 +16,8 @@ from Tools.upload import upload_video
 from translation import Translation
 
 logging.basicConfig(
-    level=logging.DEBUG, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-)
+    level=logging.DEBUG,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
 
@@ -51,7 +51,8 @@ async def download(c, m):
         metadata = extractMetadata(createParser(media_location))
         if metadata.has("duration"):
             duration = metadata.get("duration").seconds
-        thumb_image_path = Config.DOWNLOAD_LOCATION + "/" + str(m.from_user.id) + ".jpg"
+        thumb_image_path = Config.DOWNLOAD_LOCATION + \
+            "/" + str(m.from_user.id) + ".jpg"
 
         if not os.path.exists(thumb_image_path):
             mes = await get_thumb(m.from_user.id)

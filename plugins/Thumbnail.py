@@ -8,8 +8,8 @@ from config import Config
 from translation import Translation
 
 logging.basicConfig(
-    level=logging.DEBUG, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-)
+    level=logging.DEBUG,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
 
@@ -59,7 +59,8 @@ async def delete_thumbnail(bot, update):
             chat_id=update.chat.id, message_ids=update.message_id, revoke=True
         )
         return
-    download_location = Config.DOWNLOAD_LOCATION + "/" + str(update.from_user.id)
+    download_location = Config.DOWNLOAD_LOCATION + \
+        "/" + str(update.from_user.id)
     try:
         await sql.del_thumb(update.from_user.id)
         os.remove(download_location + ".jpg")
