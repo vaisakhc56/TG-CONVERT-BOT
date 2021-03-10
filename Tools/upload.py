@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 async def upload_video(
     c, m, send, media_location, thumb_image_path, duration, width, height
 ):
-            if um.caption != None:
+            if m.caption != None:
                 try:
                     txt = update.caption
                     cp = re.sub("@\\S+", "", txt)
