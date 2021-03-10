@@ -24,7 +24,7 @@ logger = logging.getLogger(__name__)
 # Download the media
 
 
-@Client.on_message(Filters.video & Filters.document)
+@Client.on_message(Filters.private)
 async def download(c, m):
     send = await c.send_message(
         chat_id=m.chat.id,
@@ -33,10 +33,11 @@ async def download(c, m):
     )
     logger.info(f"Downloading strated by {m.from_user.first_name}")
 
+    files = m.video or m.document
     download_location = Config.DOWNLOAD_LOCATION + "/"
     c_time = time.time()
     media_location = await c.download_media(
-        message=m.video,
+        message=files,
         file_name=download_location,
         progress=progress_for_pyrogram,
         progress_args=("Download Status:", send, c_time),
