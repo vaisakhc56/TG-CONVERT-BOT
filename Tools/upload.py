@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 
 async def upload_video(
-    c, m, send, media_location, thumb_image_path, duration, width, height
+    c, m, send, media_location, thumb_image_path, duration, width, height, cb
 ):
     await send.edit(Translation.UPLOAD_START)
     c_time = time.time()
