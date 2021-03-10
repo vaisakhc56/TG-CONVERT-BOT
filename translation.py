@@ -94,4 +94,4 @@ ETA 🕰: {4}
     REPLY_TEXT = "👩‍✈️ Reply to the media which you need to convert"
     DEL_ETED_CUSTOM_THUMB_NAIL = "Thumbnail Deleted Successfully ✅"
     SHOW_THUMB = "Use /deletethumbnail to clear this thumbnail."
-    NO_THUMB = "No saved thumbnails Found!!\n\nSend an image to save it as your thumbnail permanently."    
+    NO_THUMB = "No saved thumbnails Found!!\n\nSend an image to save it as your thumbnail permanently."
