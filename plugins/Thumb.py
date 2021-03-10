@@ -5,7 +5,7 @@ from config import Config
 from pyrogram import Client, filters
 
 from translation import Translation
-from database.database import *
+from Tools.database import *
 
 
 @Client.on_message(filters.private & filters.photo)
