@@ -86,7 +86,7 @@ async def download(c, m):
 
            if m.caption is not None:
                 try:
-                    txt = update.caption
+                    txt = m.caption
                     cp = re.sub("@\\S+", "", txt)
                 except BaseException:
                     pass
