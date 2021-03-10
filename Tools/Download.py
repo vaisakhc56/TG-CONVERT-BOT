@@ -39,7 +39,7 @@ async def download(c, m):
         text=Translation.DOWNLOAD_START,
         reply_to_message_id=m.message_id,
     )
-    logger.info(f"Downloading strated by {m.from_user.first_name}")
+#    logger.info(f"Downloading strated by {m.from_user.first_name}")
 
     download_location = Config.DOWNLOAD_LOCATION + "/"
     c_time = time.time()
@@ -51,7 +51,7 @@ async def download(c, m):
     )
     if media_location is not None:
         await send.edit(Translation.DOWNLOAD_COMPLETE)
-        logger.info(f"{media_location} was downloaded successfully")
+#        logger.info(f"{media_location} was downloaded successfully")
 
         width = 0
         height = 0
@@ -77,7 +77,7 @@ async def download(c, m):
                     os.path.dirname(media_location),
                     random.randint(0, duration - 1),
                 )
-            logger.info(thumb_image_path)
+#            logger.info(thumb_image_path)
 
             metadata = extractMetadata(createParser(thumb_image_path))
             if metadata.has("width"):
