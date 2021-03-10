@@ -50,7 +50,8 @@ async def download(c, m):
         metadata = extractMetadata(createParser(media_location))
             if metadata.has("duration"):
                 duration = metadata.get('duration').seconds
-            thumb_image_path = Config.DOWNLOAD_LOCATION + "/" + str(m.from_user.id) + ".jpg"
+        thumb_image_path = Config.DOWNLOAD_LOCATION + "/" + str(m.from_user.id) + ".jpg"
+
             if not os.path.exists(thumb_image_path):
                 mes = await get_thumb(m.from_user.id)
             if mes != None:
