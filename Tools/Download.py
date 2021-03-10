@@ -33,11 +33,11 @@ async def download(c, m):
     )
     logger.info(f"Downloading strated by {m.from_user.first_name}")
 
-    files = m.video or m.document
+#    files = m.video or m.document
     download_location = Config.DOWNLOAD_LOCATION + "/"
     c_time = time.time()
     media_location = await c.download_media(
-        message=files,
+        message=m.video,
         file_name=download_location,
         progress=progress_for_pyrogram,
         progress_args=("Download Status:", send, c_time),
