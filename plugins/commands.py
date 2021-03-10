@@ -79,7 +79,6 @@ async def video(c, m):
             await c.send_message(chat_id=m.chat.id, text=Translation.REPLY_TEXT)
 
 
-
 @Client.on_message(Filters.command(["login"]))
 async def login(c, m):
     if Config.BOT_PWD:
