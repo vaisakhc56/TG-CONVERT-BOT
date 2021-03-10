@@ -48,10 +48,12 @@ async def download(c, m):
         height = 0
         duration = 0
         metadata = extractMetadata(createParser(media_location))
+        if metadata.has("duration"):
+           duration = metadata.get('duration').seconds
         thumb_image_path = Config.DOWNLOAD_LOCATION + "/" + str(m.from_user.id) + ".jpg"
 
-            if not os.path.exists(thumb_image_path):
-                mes = await get_thumb(m.from_user.id)
+        if not os.path.exists(thumb_image_path):
+            mes = await get_thumb(m.from_user.id)
             if mes != None:
                 try:
                     mes = await c.get_messages(m.chat.id, mes.msg_id)
@@ -71,8 +73,6 @@ async def download(c, m):
             logger.info(thumb_image_path)
 
             metadata = extractMetadata(createParser(thumb_image_path))
-            if metadata.has("duration"):
-                duration = metadata.get('duration').seconds
             if metadata.has("width"):
                 width = metadata.get("width")
             if metadata.has("height"):
