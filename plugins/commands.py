@@ -3,7 +3,6 @@ import logging
 from pyrogram import Client, Filters, InlineKeyboardButton, InlineKeyboardMarkup
 
 from config import Config
-from Tools.Download import download
 from translation import Translation
 
 logging.basicConfig(
@@ -33,5 +32,3 @@ async def start(c, m):
         ),
     )
     logger.info(f"{m.from_user.first_name} used start command")
-
-
