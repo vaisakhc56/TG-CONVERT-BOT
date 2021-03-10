@@ -2,7 +2,7 @@ import os
 
 from config import Config
 
-from pyrogram import Client, filters    
+from pyrogram import Client, filters
 
 from translation import Translation
 from database.database import *
@@ -18,7 +18,8 @@ async def save_photo(bot, update):
         )
         return
     if update.media_group_id is not None:
-        download_location = Config.DOWNLOAD_LOCATION + "/" + str(update.from_user.id) + "/" + str(update.media_group_id) + "/"
+        download_location = Config.DOWNLOAD_LOCATION + "/" + \
+            str(update.from_user.id) + "/" + str(update.media_group_id) + "/"
         if not os.path.isdir(download_location):
             os.makedirs(download_location)
         await df_thumb(update.from_user.id, update.message_id)
@@ -27,7 +28,8 @@ async def save_photo(bot, update):
             file_name=download_location
         )
     else:
-        download_location = Config.DOWNLOAD_LOCATION + "/" + str(update.from_user.id) + ".jpg"
+        download_location = Config.DOWNLOAD_LOCATION + \
+            "/" + str(update.from_user.id) + ".jpg"
         await df_thumb(update.from_user.id, update.message_id)
         await bot.download_media(
             message=update,
@@ -49,16 +51,17 @@ async def delete_thumbnail(bot, update):
             revoke=True
         )
         return
-    thumb_image_path = Config.DOWNLOAD_LOCATION + "/" + str(update.from_user.id) + ".jpg"
-    
+    thumb_image_path = Config.DOWNLOAD_LOCATION + \
+        "/" + str(update.from_user.id) + ".jpg"
+
     try:
         await del_thumb(update.from_user.id)
-    except:
+    except BaseException:
         pass
 
     try:
         os.remove(thumb_image_path)
-    except:
+    except BaseException:
         pass
 
     await bot.send_message(
@@ -66,6 +69,7 @@ async def delete_thumbnail(bot, update):
         text=Translation.DEL_ETED_CUSTOM_THUMB_NAIL,
         reply_to_message_id=update.message_id
     )
+
 
 @Client.on_message(filters.private & filters.command(["showthumb"]))
 async def show_thumb(bot, update):
@@ -77,16 +81,17 @@ async def show_thumb(bot, update):
         )
         return
 
-    thumb_image_path = Config.DOWNLOAD_LOCATION + "/" + str(update.from_user.id) + ".jpg"
+    thumb_image_path = Config.DOWNLOAD_LOCATION + \
+        "/" + str(update.from_user.id) + ".jpg"
     if not os.path.exists(thumb_image_path):
         mes = await thumb(update.from_user.id)
-        if mes != None:
+        if mes is not None:
             m = await bot.get_messages(update.chat.id, mes.msg_id)
             await m.download(file_name=thumb_image_path)
             thumb_image_path = thumb_image_path
         else:
-            thumb_image_path = None    
-    
+            thumb_image_path = None
+
     if thumb_image_path is not None:
         try:
             await bot.send_photo(
@@ -94,7 +99,7 @@ async def show_thumb(bot, update):
                 photo=thumb_image_path,
                 caption=Translation.SHOW_THUMB
             )
-        except:
+        except BaseException:
             pass
     else:
         await bot.send_message(
