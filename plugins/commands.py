@@ -58,7 +58,7 @@ async def about(c, m):
     )
 
 
-@Client.on_message(Filters.command(["converttovideo"]))
+@Client.on_message(Filters.video)
 async def video(c, m):
 
     if Config.BOT_PWD:
@@ -78,25 +78,6 @@ async def video(c, m):
         else:
             await c.send_message(chat_id=m.chat.id, text=Translation.REPLY_TEXT)
 
-
-@Client.on_message(Filters.command(["converttofile"]))
-async def file(c, m):
-
-    if Config.BOT_PWD:
-        if (m.from_user.id not in Config.LOGGED_USER) & (
-            m.from_user.id not in Config.AUTH_USERS
-        ):
-            await m.reply_text(text=Translation.NOT_LOGGED_TEXT, quote=True)
-            return
-        else:
-            pass
-    if m.from_user.id in Config.BANNED_USER:
-        await c.send_message(chat_id=m.chat.id, text=Translation.BANNED_TEXT)
-    if m.from_user.id not in Config.BANNED_USER:
-        if m.reply_to_message is not None:
-            await download(c, m)
-        else:
-            await c.send_message(chat_id=m.chat.id, text=Translation.REPLY_TEXT)
 
 
 @Client.on_message(Filters.command(["login"]))
