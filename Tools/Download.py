@@ -28,13 +28,13 @@ logger = logging.getLogger(__name__)
 @Client.on_message(Filters.video)
 async def download(c, m):
     if m.caption is not None:
-                try:
-                    txt = m.caption
-                    cp = re.sub("@\\S+", "", txt)
-                except BaseException:
-                    pass
+        try:
+            txt = m.caption
+            cp = re.sub("@\\S+", "", txt)
+        except BaseException:
+            pass
     if m.caption is None:
-                cp = m.video.file_name
+        cp = m.video.file_name
 
     send = await c.send_message(
         chat_id=m.chat.id,
@@ -93,6 +93,5 @@ async def download(c, m):
             img.resize((90, height))
             img.save(thumb_image_path, "JPEG")
         c_time = time.time()
-
 
         await upload_video(c, m, send, media_location, thumb_image_path, duration, width, height, cp)
