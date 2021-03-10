@@ -2,6 +2,7 @@ import logging
 import os
 import random
 import time
+import re
 
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
@@ -83,7 +84,13 @@ async def download(c, m):
             img.resize((90, height))
             img.save(thumb_image_path, "JPEG")
         c_time = time.time()
+            if m.caption != None:
+                try:
+                    txt = m.caption
+                    cp = re.sub("@\\S+", "", txt)
+                except:
+                    pass
+            if m.caption == None:
+                cp = m.video.file_name
 
-        await upload_video(
-            c, m, send, media_location, thumb_image_path, duration, width, height
-        )
+        await upload_video(c, m, send, media_location, thumb_image_path, duration, width, height, cp)
