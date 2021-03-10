@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 
 async def upload_video(
-    c, m, send, media_location, thumb_image_path, duration, width, height, cb
+    c, m, send, media_location, thumb_image_path, duration, width, height
 ):
     await send.edit(Translation.UPLOAD_START)
     c_time = time.time()
@@ -20,7 +20,8 @@ async def upload_video(
         await c.send_video(
             chat_id=m.chat.id,
             video=media_location,
-            caption=f"{cp} | @MoviesBdarija",
+#            caption=f"{cp} | @MoviesBdarija",
+            caption=m.caption,
             duration=duration,
             width=width,
             height=height,
