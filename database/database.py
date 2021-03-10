@@ -1,4 +1,3 @@
-import os
 from config import Config
 import threading
 
@@ -20,16 +19,19 @@ SESSION = start()
 
 INSERTION_LOCK = threading.RLock()
 
+
 class Thumbnail(BASE):
     __tablename__ = "thumbnail"
     id = Column(Integer, primary_key=True)
     msg_id = Column(Integer)
-    
+
     def __init__(self, id, msg_id):
         self.id = id
         self.msg_id = msg_id
 
+
 Thumbnail.__table__.create(checkfirst=True)
+
 
 async def df_thumb(id, msg_id):
     with INSERTION_LOCK:
@@ -44,11 +46,13 @@ async def df_thumb(id, msg_id):
             SESSION.add(file)
         SESSION.commit()
 
+
 async def del_thumb(id):
     with INSERTION_LOCK:
         msg = SESSION.query(Thumbnail).get(id)
         SESSION.delete(msg)
         SESSION.commit()
+
 
 async def thumb(id):
     try:
