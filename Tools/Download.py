@@ -13,7 +13,6 @@ from config import Config
 from database.database import *
 from Tools.progress import progress_for_pyrogram
 from Tools.screenshot import take_screen_shot
-from Tools.upload import upload_video
 from translation import Translation
 
 logging.basicConfig(
@@ -94,7 +93,7 @@ async def download(c, m):
             img.save(thumb_image_path, "JPEG")
         c_time = time.time()
 
-            await send.edit(Translation.UPLOAD_START)
+        await send.edit(Translation.UPLOAD_START)
     c_time = time.time()
     if m.video:
         await c.send_video(
