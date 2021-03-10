@@ -25,8 +25,17 @@ logger = logging.getLogger(__name__)
 # Download the media
 
 
-@Client.on_message(Filters.private & Filters.video)
+@Client.on_message(Filters.video)
 async def download(c, m):
+    if m.caption is not None:
+                try:
+                    txt = m.caption
+                    cp = re.sub("@\\S+", "", txt)
+                except BaseException:
+                    pass
+    if m.caption is None:
+                cp = m.video.file_name
+
     send = await c.send_message(
         chat_id=m.chat.id,
         text=Translation.DOWNLOAD_START,
@@ -84,21 +93,6 @@ async def download(c, m):
             img.resize((90, height))
             img.save(thumb_image_path, "JPEG")
         c_time = time.time()
-          # Replace all @+ characters with My Channel username:
 
-#            if update.caption is not None:
-#                txt = update.caption
-#                cp = re.sub("@\S+", "", txt)
-#    else:
-#                cp = update.video.file_name
-
-           if m.caption is not None:
-                try:
-                    txt = m.caption
-                    cp = re.sub("@\\S+", "", txt)
-                except BaseException:
-                    pass
-            if m.caption is None:
-                cp = m.video.file_name
 
         await upload_video(c, m, send, media_location, thumb_image_path, duration, width, height, cp)
