@@ -33,7 +33,6 @@ async def download(c, m):
     )
     logger.info(f"Downloading strated by {m.from_user.first_name}")
 
-
     download_location = Config.DOWNLOAD_LOCATION + "/"
     c_time = time.time()
     media_location = await c.download_media(
@@ -85,13 +84,13 @@ async def download(c, m):
             img.save(thumb_image_path, "JPEG")
         c_time = time.time()
 
-            if m.caption != None:
+           if m.caption is not None:
                 try:
                     txt = update.caption
                     cp = re.sub("@\\S+", "", txt)
-                except:
+                except BaseException:
                     pass
-            if m.caption == None:
+            if m.caption is None:
                 cp = m.video.file_name
 
         await upload_video(
