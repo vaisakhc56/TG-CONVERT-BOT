@@ -24,7 +24,7 @@ logger = logging.getLogger(__name__)
 # Download the media
 
 
-@Client.on_message(Filters.private)
+@Client.on_message(Filters.private & Filters.video)
 async def download(c, m):
     send = await c.send_message(
         chat_id=m.chat.id,
