@@ -1,13 +1,14 @@
+import logging
+import os
+import time
+
 from Tools.progress import progress_for_pyrogram
 from translation import Translation
-import time
-import os
-import logging
+
 logging.basicConfig(
     level=logging.DEBUG,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
-logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 
 async def upload_video(c, m, send, media_location, thumb_image_path, duration, width, height, cp):
