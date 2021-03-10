@@ -1,4 +1,10 @@
 import logging
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+logging.getLogger("pyrogram").setLevel(logging.WARNING)
+
+
 import os
 import random
 import time
@@ -7,7 +13,8 @@ import re
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from PIL import Image
-from pyrogram import Client, Filters
+from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 from config import Config
 from database.database import *
@@ -16,16 +23,11 @@ from Tools.screenshot import take_screen_shot
 from Tools.upload import upload_video
 from translation import Translation
 
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
-logger = logging.getLogger(__name__)
-
 
 # Download the media
 
 
-@Client.on_message(Filters.video)
+@Client.on_message(filters.private & filters.video)
 async def download(c, m):
     if m.caption is not None:
         try:
