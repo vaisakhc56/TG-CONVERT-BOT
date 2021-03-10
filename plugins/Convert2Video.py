@@ -10,7 +10,7 @@ from PIL import Image
 from pyrogram import Client, filters
 
 from config import Config
-from database.database import *
+from Tools.database import *
 from Tools.progress import progress_for_pyrogram
 from Tools.screenshot import take_screen_shot
 from translation import Translation
