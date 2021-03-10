@@ -1,25 +1,13 @@
-import logging
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
-logging.getLogger("pyrogram").setLevel(logging.WARNING)
-
-import os
-import time
-import json
-import asyncio
-
-from config import Config
-
-from translation import Translation
-
-from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-
-from database.database import *
-
 from Tools.progress import progress_for_pyrogram
 from translation import Translation
+import time
+import os
+import logging
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 
 async def upload_video(c, m, send, media_location, thumb_image_path, duration, width, height, cp):
