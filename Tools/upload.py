@@ -20,7 +20,7 @@ async def upload_video(
         await c.send_video(
             chat_id=m.chat.id,
             video=media_location,
-#            caption=f"{cp} | @MoviesBdarija",
+            #            caption=f"{cp} | @MoviesBdarija",
             caption=m.caption,
             duration=duration,
             width=width,
