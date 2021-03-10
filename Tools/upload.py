@@ -1,6 +1,5 @@
 import logging
 import os
-import re
 import time
 
 from Tools.progress import progress_for_pyrogram
