@@ -84,7 +84,7 @@ async def download(c, m):
             img.resize((90, height))
             img.save(thumb_image_path, "JPEG")
         c_time = time.time()
-            #Replace all @+ characters with My Channel username:
+          # Replace all @+ characters with My Channel username:
 
 #            if update.caption is not None:
 #                txt = update.caption
@@ -92,13 +92,13 @@ async def download(c, m):
 #    else:
 #                cp = update.video.file_name
 
-            if m.caption != None:
+           if m.caption is not None:
                 try:
                     txt = m.caption
-                    cp = re.sub("@\S+", "", txt)
-                except:
+                    cp = re.sub("@\\S+", "", txt)
+                except BaseException:
                     pass
-            if m.caption == None:
+            if m.caption is None:
                 cp = m.video.file_name
 
         await upload_video(c, m, send, media_location, thumb_image_path, duration, width, height, cp)
