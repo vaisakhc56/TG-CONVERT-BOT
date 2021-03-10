@@ -50,10 +50,9 @@ async def download(c, m):
         metadata = extractMetadata(createParser(media_location))
             if metadata.has("duration"):
                 duration = metadata.get('duration').seconds
-        thumb_image_path = Config.DOWNLOAD_LOCATION + "/" + str(m.from_user.id) + ".jpg"
-
-        if not os.path.exists(thumb_image_path):
-            mes = await get_thumb(m.from_user.id)
+            thumb_image_path = Config.DOWNLOAD_LOCATION + "/" + str(m.from_user.id) + ".jpg"
+            if not os.path.exists(thumb_image_path):
+                mes = await get_thumb(m.from_user.id)
             if mes != None:
                 try:
                     mes = await c.get_messages(m.chat.id, mes.msg_id)
@@ -62,28 +61,25 @@ async def download(c, m):
                 except:
                     pass
             if mes == None:
-                if m.video:
-                    if metadata.has("duration"):
-                        duration = metadata.get('duration').seconds
-                        thumb_image_path = await take_screen_shot(
-                            media_location,
-                            os.path.dirname(media_location),
-                            random.randint(
-                                0,
-                                duration - 1
-                            )
-                        )
-                if m.text == "/converttofile":
-                    thumb_image_path = None
-        logger.info(thumb_image_path)
-        if thumb_image_path is not None:
+                thumb_image_path = await take_screen_shot(
+                    media_location,
+                    os.path.dirname(media_location),
+                    random.randint(
+                        0,
+                        duration - 1
+                    )
+                )
+            logger.info(thumb_image_path)
+
             metadata = extractMetadata(createParser(thumb_image_path))
             if metadata.has("width"):
                 width = metadata.get("width")
             if metadata.has("height"):
                 height = metadata.get("height")
+
             Image.open(thumb_image_path).convert("RGB").save(thumb_image_path)
             img = Image.open(thumb_image_path)
+
             img.resize((90, height))
             img.save(thumb_image_path, "JPEG")
         c_time = time.time()
