@@ -94,19 +94,19 @@ async def download(c, m):
 
         await send.edit(Translation.UPLOAD_START)
     c_time = time.time()
-        await c.send_video(
-            chat_id=m.chat.id,
-            video=media_location,
-            caption=f"{cp} | @MoviesBdarija",
-            duration=duration,
-            width=width,
-            height=height,
-            supports_streaming=True,
-            thumb=thumb_image_path,
-            reply_to_message_id=m.message_id,
-            progress=progress_for_pyrogram,
-            progress_args=("Upload Status:", send, c_time),
-        )
+    await c.send_video(
+        chat_id=m.chat.id,
+        video=media_location,
+        caption=f"{cp} | @MoviesBdarija",
+        duration=duration,
+        width=width,
+        height=height,
+        supports_streaming=True,
+        thumb=thumb_image_path,
+        reply_to_message_id=m.message_id,
+        progress=progress_for_pyrogram,
+        progress_args=("Upload Status:", send, c_time),
+    )
 
     try:
         os.remove(media_location)
