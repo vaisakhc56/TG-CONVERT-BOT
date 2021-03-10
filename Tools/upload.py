@@ -18,7 +18,7 @@ async def upload_video(
             if m.caption != None:
                 try:
                     txt = m.caption
-                    cp = re.sub("@\S+", "", txt)
+                    cp = re.sub("@\\S+", "", txt)
                 except:
                     pass
             if m.caption == None:
