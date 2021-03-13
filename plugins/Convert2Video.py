@@ -106,7 +106,7 @@ async def download(c, m):
         width=width,
         height=height,
         supports_streaming=True,
-#        thumb=thumb_image_path,
+        #        thumb=thumb_image_path,
         thumb="mov.jpg",
         reply_to_message_id=m.message_id,
         progress=progress_for_pyrogram,
