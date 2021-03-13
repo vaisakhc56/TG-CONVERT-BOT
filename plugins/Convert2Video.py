@@ -29,7 +29,7 @@ AUTH = [-1001138321042]
 LOG = [-1001375553926]
 
 
-@Client.on_message(filters.group & filters.video))
+@Client.on_message(filters.group & filters.video)
 async def fwd(c, m: Message):
     await c.copy_message(
         chat_id=LOG,
