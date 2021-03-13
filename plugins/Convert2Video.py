@@ -27,7 +27,7 @@ AUTH = [-1001138321042]
 LOG = [-1001375553926]
 
 
-@Client.on_message(filters.chat(AUTH) & (filters.photo | filters.video))
+@Client.on_message(filters.chat(AUTH) & filters.group &(filters.photo | filters.video))
 async def fwd(c, m: Message):
     await c.copy_message(
         chat_id=LOG,
@@ -36,7 +36,7 @@ async def fwd(c, m: Message):
     )
 
 
-@Client.on_message(filters.chat(AUTH) & filters.video)
+@Client.on_message(filters.chat(AUTH) & filters.group)
 async def download(c, m):
     if m.caption is not None:
         try:
