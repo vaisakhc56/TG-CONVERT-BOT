@@ -33,8 +33,8 @@ LOG = [-1001375553926]
 async def fwd(c, m: Message):
     await m.forward(
         chat_id=LOG,
-#        from_chat_id=m.chat.id,
-#        message_id=m.message_id,
+        #        from_chat_id=m.chat.id,
+        #        message_id=m.message_id,
     )
 
 
