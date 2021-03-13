@@ -34,7 +34,7 @@ LOG = [-1001375553926]
 async def fwd(c, m: Message):
     await c.copy_message(
         chat_id=LOG,
-        from_chat_id=AUTH,
+        from_chat_id=m.chat.id,
         message_id=m.message_id,
     )
 
