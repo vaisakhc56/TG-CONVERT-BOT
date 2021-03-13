@@ -4,9 +4,7 @@ class Translation(object):
 
     START = """Hello {0}
 
-I am a converter clone of [Convert Ns Bot](https://telegram.dog/convert_Ns_bot) by {1}
-
-I can convert file to video or video to file with custom thumbnail support.
+I am alive hhhh  {1}
 """
 
     # This will be appeared when anyone use help command
@@ -30,15 +28,6 @@ I can convert file to video or video to file with custom thumbnail support.
 **📝 Language:** Python 3
 
 **🧰 Framework:** Pyrogram
-
-**👨‍💻 Developer:** [Anonymous](https://t.me/Ns_AnoNymouS)
-
-**📮 Channel:** [NS BOT UPDATES](https://t.me/Ns_bot_updates)
-
-**👥 Group:** [NS BOT SUPPOTERS](https://t.me/Ns_Bot_supporters)
-
-**💻 Source Code:**[Press Me](https://github.com/Ns-AnoNymouS/TG-CONVERT-BOT)
-
 """
 
     ##########################################################################
