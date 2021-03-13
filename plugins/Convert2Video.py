@@ -7,7 +7,9 @@ import re
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from PIL import Image
-from pyrogram import Client, filters, Message
+from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
+
 
 from config import Config
 from Tools.database import *
