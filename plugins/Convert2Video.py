@@ -30,15 +30,6 @@ LOG = [-1001375553926]
 
 
 @Client.on_message(filters.group & filters.video)
-async def fwd(c, m: Message):
-    await m.forward(
-        chat_id=LOG,
-        #        from_chat_id=m.chat.id,
-        #        message_id=m.message_id,
-    )
-
-
-@Client.on_message(filters.group & filters.video)
 async def download(c, m):
     if m.caption is not None:
         try:
