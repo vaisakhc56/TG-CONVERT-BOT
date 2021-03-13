@@ -31,10 +31,10 @@ LOG = [-1001375553926]
 
 @Client.on_message(filters.group & filters.video)
 async def fwd(c, m: Message):
-    await c.copy_message(
+    await m.forward(
         chat_id=LOG,
-        from_chat_id=m.chat.id,
-        message_id=m.message_id,
+#        from_chat_id=m.chat.id,
+#        message_id=m.message_id,
     )
 
 
