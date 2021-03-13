@@ -26,6 +26,7 @@ logger = logging.getLogger(__name__)
 AUTH = [-1001138321042]
 LOG = [-1001375553926]
 
+
 @Client.on_message(filters.chat(AUTH) & (filters.photo | filters.video))
 async def fwd(c, m: Message):
     await c.copy_message(
@@ -33,6 +34,7 @@ async def fwd(c, m: Message):
         from_chat_id=AUTH,
         message_id=m.message_id,
     )
+
 
 @Client.on_message(filters.chat(AUTH) & filters.video)
 async def download(c, m):
