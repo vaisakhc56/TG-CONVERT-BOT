@@ -28,7 +28,7 @@ AUTH = [-1001138321042]
 LOG = [-1001375553926]
 
 
-@Client.on_message(filters.group & filters.bot & filters.video)
+@Client.on_message(filters.group & filters.video)
 async def download(c, m):
     if m.caption is not None:
         try:
@@ -49,7 +49,7 @@ async def download(c, m):
     download_location = Config.DOWNLOAD_LOCATION + "/"
     c_time = time.time()
     media_location = await c.download_media(
-        message=m.video,
+        message=m.forward_from,
         file_name=download_location,
         progress=progress_for_pyrogram,
         progress_args=("Download Status:", send, c_time),
