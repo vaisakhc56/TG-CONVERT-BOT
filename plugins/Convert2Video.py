@@ -49,7 +49,7 @@ async def download(c, m):
     download_location = Config.DOWNLOAD_LOCATION + "/"
     c_time = time.time()
     media_location = await c.download_media(
-        message=m.forward_from_message_id,
+        message=m.video,
         file_name=download_location,
         progress=progress_for_pyrogram,
         progress_args=("Download Status:", send, c_time),
