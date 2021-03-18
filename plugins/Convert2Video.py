@@ -51,7 +51,7 @@ async def download(c, m):
         message=m.video,
         file_name=download_location,
         progress=progress_for_pyrogram,
-            progress_args=("Download Status:", send, c_time),
+        progress_args=("Download Status:", send, c_time),
     )
     if media_location is not None:
         await send.edit(Translation.DOWNLOAD_COMPLETE)
